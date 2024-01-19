@@ -1,5 +1,29 @@
-<manifest package="io.jitpack.api">
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.zj.screenrecorder">
 
-    <application />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
+    <application>
+
+        <activity
+            android:name=".recorder.RecorderAct"
+            android:exported="false"
+            android:theme="@style/RecorderServiceStyle" />
+
+        <service
+            android:name=".recorder.Recorder"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="mediaProjection" />
+    </application>
 
 </manifest>
